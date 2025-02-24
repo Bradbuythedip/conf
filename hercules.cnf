@@ -1,0 +1,32 @@
+# Hercules Configuration File for MVS 5.2.2
+CPUSERIAL 000611              # CPU serial number
+CPUMODEL  3090                # CPU model number
+MODEL     EMULATOR            
+PLANT     ZZ                  
+MANUFACTURER HRC              
+MAINSIZE  64                  # Main storage size in MB
+XPNDSIZE  0                   # Expanded storage size
+NUMCPU    1                   # Number of CPUs
+MAXCPU    8                   # Maximum number of CPUs
+ARCHMODE  ESA/390             # Architecture mode 
+LOADPARM  012200             # IPL parameters
+
+# Console Devices
+0009    3215-C  /            # Integrated console
+000C    3505    dummy.card   # Card reader 
+000D    3525    punch00d.txt # Card punch
+000E    1403    print00e.txt # Printer
+001F    3270                 # Terminal
+
+# DASD Devices - 3380 volumes
+0120    3380    mvsv5r.120    # System volume (IPL volume)
+0121    3380    mvsv5d.121    # Distribution libraries
+0122    3380    scpmv5.122    # System control datasets  
+0123    3380    p390dx.123    # Database product libraries
+
+# 3270 Console Devices
+0700    3270                # MVS Master Console
+0701    3270                # Local TSO Session 1
+0702    3270                # Local TSO Session 2
+0900    3270                # Local TSO Session 3
+0901    3270                # Local TSO Session 4
