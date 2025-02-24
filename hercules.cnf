@@ -1,0 +1,75 @@
+#------------------------------------------------------------------------------
+#       Hercules Configuration File for Fred Doty's IBM Mainframe
+#       Fred Doty - IBM Cryptographer (Father)
+#       Puzzle created by Robert Doty (Son)
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+#       CPU Configuration
+#------------------------------------------------------------------------------
+
+CPUSERIAL 725680              # Fred Doty's IBM man number
+CPUMODEL  3090                # Common IBM model from his era
+MODEL     EMULATOR            # STSI returned model
+PLANT     ZZ                  # STSI returned plant
+MANUFACTURER HRC              # STSI returned manufacturer
+LPARNAME  FREDDOTY           # Fred Doty - Original IBM Cryptographer
+CPUVERID  FD                  # CPU Version ID (matching Fred Doty's initials)
+MAINSIZE  64                  # Main storage size in megabytes
+XPNDSIZE  0                   # Expanded storage size in megabytes
+NUMCPU    1                   # Single CPU
+MAXCPU    8                   # Maximum number of CPUs
+ARCHMODE  ESA/390             # Compatible with System/370 era
+ALRF      DISABLE             # ASN-and-LX-Reuse facility
+ECPSVM    NO                  # VM Assist : NO or Level (20 recommended)
+
+#------------------------------------------------------------------------------
+#       OS Tailoring
+#------------------------------------------------------------------------------
+
+LOADPARM  29158E29            # Recovery key as 8-char hex string
+OSTAILOR  LINUX               # OS tailoring
+SYSEPOCH  1900                # Base year for initial TOD clock
+TZOFFSET  -0500               # Eastern Time (US) - IBM Poughkeepsie
+
+#------------------------------------------------------------------------------
+#       Hercules Service Processor and Hercules Application Window
+#------------------------------------------------------------------------------
+
+CODEPAGE  default             # CodePage conversion table
+DIAG8CMD  disable             # OS may not issue commands via DIAG 8
+
+HTTPPORT  8081 noauth         # HTTP server port
+PANRATE   FAST                # Panel refresh rate
+
+#------------------------------------------------------------------------------
+#       Advanced Hercules Performance Tailoring
+#------------------------------------------------------------------------------
+
+# HERCPRIO    0               # Hercules process runs at Normal priority
+# CPUPRIO    15              # CPU thread(s) run at Low priority
+# DEVPRIO     8              # Device thread(s) run at Below Normal priority
+# TODPRIO   -20              # TOD Clock and timer thread are Time Critical
+
+#------------------------------------------------------------------------------
+#       Integrated Hercules I/O Controller
+#------------------------------------------------------------------------------
+
+CNSLPORT  3270                # TCP port number to which consoles connect
+
+#   .-----------------------Device number
+#   |     .-----------------Device type
+#   |     |       .---------File name and parameters
+#   |     |       |
+#   V     V       V
+# ----    ----    --------------------
+0009    3215-C  / noprompt            # Console for interaction
+000C    3505    ./util/zzsacard.bin   # Card reader
+000D    3525    punch00d.txt ascii    # Card punch
+000E    1403    print00e.txt crlf     # Printer
+001F    3270                          # Terminal for login
+
+# DASD Devices (commented until paths are confirmed)
+#0120    3380    mvsv5r.120           # Primary OS volume - May contain Fred's programs
+#0121    3380    mvsv5d.121           # Data volume - May contain encrypted data
+#0122    3380    mvswk1.122           # Work volume
